@@ -18,22 +18,24 @@ Nevertheless, many questions were not answered well by any of the participating 
 In this work we explore two ways \textit{crowdsourcing} can be used to help an automated system answer complex user questions.
 The main challenge is how to adapt existing ``batch-mode'' crowdsourcing platforms such as Amazon Mechanical Turk to real-time settings, \textit{e.g.}, to produce an answer within a minute.
 More specifically, we study if crowd workers can quickly and reliably judge the quality of the proposed answer candidates, and if it is possible to obtain reasonable written answers from the crowd within a limited amount of time.
-
-Our research questions can be stated as:
-\begin{itemize}
-\item RQ1. Can crowdsourcing be used to improve the performance of a near real-time automated question answering system?
-\item RQ2. What is the relative contribution of candidate answer ratings and answers provided by the workers to the overall question answering performance?
-\item RQ3. What are the tradeoffs in performance, cost, and scalability of using crowdsourcing for real-time question answering?
-\end{itemize}
-
 To explore these research questions, we introduce our CRQA system, which stands for Crowd-powered Real-time Question Answering.
-CRQA integrates a crowdsourcing module into an automated question answering system within an overall learning-to-rank framework for selecting answers to complex questions. We report extensive experiments of stress-testing the CRQA system, by participating in the TREC LiveQA 2016 evaluation challenge, which provided us with a realistic evaluation setup.
+CRQA integrates a crowdsourcing module into an automated question answering system within an overall learning-to-rank framework for selecting answers to complex questions.
+We report extensive experiments of stress-testing the CRQA system, by participating in the TREC LiveQA 2016 evaluation challenge, which provided us with a realistic evaluation setup.
 
 Specifically, the contributions of this paper are threefold:
 \begin{enumerate}
-\item CRQA, a novel hybrid near real-time question answering system, that uses crowd workers to rate and augment automatically generated candidate answers.
-\item Large scale experiments using CRQA to answer real user questions in a live TREC LiveQA 2016 challenge setting.
-\item Extensive analysis of the system performance, focusing on the contributions of crowd input to the performance of the overall system.
+	\item CRQA, a novel hybrid near real-time question answering system, that uses crowd workers to rate and augment automatically generated candidate answers.
+	\item Large scale experiments using CRQA to answer real user questions in a live TREC LiveQA 2016 challenge setting.
+	\item Extensive analysis of the system performance, focusing on the contributions of crowd input to the performance of the overall system.
 \end{enumerate}
 
 The results and findings of this work can be useful to guide future research on hybrid human-computer question answering, and automated intelligent assistant systems.
+
+\todo[inline]{Not sure where to put research questions. They are not 1-1 with contributions.}
+%Our research questions can be stated as:
+%\begin{itemize}
+%\item RQ1. Can crowdsourcing be used to improve the performance of a near real-time automated question answering system?
+%\item RQ2. What is the relative contribution of candidate answer ratings and answers provided by the workers to the overall question answering performance?
+%\item RQ3. What are the trade-offs in performance, cost, and scalability of using crowdsourcing for real-time question answering?
+%\end{itemize}
+

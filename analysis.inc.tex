@@ -12,6 +12,7 @@ Even with limited time, workers were able to reliably rate candidate answers, wh
 However, this method doesn't help the system in cases, when it wasn't able to generate a good candidate in the first place, therefore using ratings only has lower average answer score than using worker generated answers.
 By asking the crowd to provide a response if they can answer the question, CRQA covers this gap, which is important as in a real scenario even a fair answer would probably be better for the user than no answer at all.
 Of course, given limited time and the fact that a random worker might not possess an expertise required to answer the question, such answers don't always perfectly answer the question.
+\todo[inline]{One of the limitations of the paper is that it does not discuss the type of topics / questions on which the approach  works well and the type of topics on which the use of crowdsourcing fails.}
 Table \ref{table:answer_examples} gives some examples of worker generated answers with low and high quality scores.
 
 To summarize our answer to RQ2, ratings of answer candidates and worker generated answers both have similar positive effect on the performance of our question answering system.

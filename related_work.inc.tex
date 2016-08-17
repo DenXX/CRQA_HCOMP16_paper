@@ -9,6 +9,8 @@ In CrowdDB human input is used to collect missing data, perform computationally 
 In \cite{aydin2014crowdsourcing} authors explored efficient ways to combine human input for multiple choice questions from the ``Who wants to be a millionaire?'' TV show.
 In this scenario going with the majority for complex questions isn't effective, and certain answerer confidence weighting schemas can improve the results.  
 CrowdSearcher platform of \cite{Bozzon:2012:ASQ:2187836.2187971} proposes to use crowds as a data source in the search process, which connects a searcher with the information available through the users of multiple different social platforms.
+In general, such websites open up many opportunities to interact with their users, in particular, identify users who might possess certain knowledge and request it by asking questions.
+For example, \cite{nichols2012asking,nichols2013analyzing,mahmud2013recommending} showed that it's possible to get the information about airport security waiting times and product reviews by asking social network users, who identified themselves as being at an airport or mentioned the product of interest correspondingly.
 While in this work, we primarily focused on more traditional way of hiring the crowd workers using Amazon Mechanical Turk, integration with social services is an interesting direction for the future work.
 
 Many works have used crowdsourcing to get a valuable information that could guide an automated system for some complex tasks.
@@ -26,6 +28,7 @@ Its application to (near) real-time scenarios poses certain additional challenge
 VizWiz mobile application of \cite{bigham2010vizwiz} uses a similar strategy to quickly answer visual questions.
 This work builds on these ideas and uses the proposed retainer model to integrate a crowd into a real-time question answering system.
 The work of \cite{Lasecki:2013:CCC:2501988.2502057} showed how multiple workers can sit behind a conversational agent named Chorus, where human input is used to propose and vote on responses.
+\todo[inline]{Compare with Chorus in more detail. "how it is different than Chorus or what was missing from such a system like chorus and to what is currently being presented. What was missing in the evaluation that Chorus did vs what you are presenting"}
 In our work we use similar ideas in application to question answering, which requires more comprehensive responses from the workers.
 Another use of a crowd for maintaining a dialog is presented in \cite{Bessho:2012:DSU:2392800.2392841}, who let the crowd handle difficult cases, when a system was not able to automatically retrieve a good response from the database of twitter data.
 In our paper, we focus on a single part of the human-computer dialog, i.e. question answering, which requires a system to provide some useful information in a response to the user.

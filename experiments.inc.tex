@@ -30,12 +30,15 @@ To investigate the effect of the order of the candidates posted for ratings on t
 The system variant with shuffled candidates for rating was expected to obtain more diverse and comprehensive set of ratings, as we will investigate in the Analysis section.
 
 \subsection{Answer Quality Evaluation}
+\label{sec:experiments:answer-quality-evaluation}
+
 The official results of the shared task will be available in November 2016 during the TREC conference\footnote{http://trec.nist.gov/}.
 Meanwhile, we used traditional (batch-mode) crowdsourcing to obtain the quality labels for all answer candidates that were given to the workers during the task, as well as the answers provided by the workers.
 In addition, on June 2, two days after the TREC LiveQA challenge has completed, we crawled the current answers provided by the community for the questions, used for the task.
 All the answers for each question were randomly shuffled and rated on a scale from 1 (bad) to 4 (excellent) by workers hired on Amazon Mechanical Turk.
 Existing research demonstrated, that such crowdsourced labels correlates well with the official ratings, provided by the professional NIST assessors \cite{savenkov_crowdsourcing2016a}.
 Each answer was labelled by 3 different workers, and we averaged the scores to get the final quality labels for the candidates.
+
 
 \subsubsection{Methods compared.}
 We compared CRQA system against several baselines:
@@ -85,7 +88,7 @@ The introduction of the crowdsourcing module allowed CRQA to cover a couple of p
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/score_hist}
-	\caption{Histogram and kernel density estimation of answer scores for original candidate ranking, CPQA model re-ranking and Yahoo! Answers answers}
+	\caption{Histogram and kernel density estimation of answer scores for original candidate ranking, CRQA model re-ranking and Yahoo! Answers answers}
 	\label{fig:score_histogram}
 \end{figure}
 

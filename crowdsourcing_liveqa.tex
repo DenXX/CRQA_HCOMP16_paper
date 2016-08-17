@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{todonotes}
 \usepackage{enumitem}
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
@@ -16,23 +17,23 @@
 \setlength{\pdfpageheight}{11in}
 
 \pdfinfo{
-/Title (Insert Your Title Here)
-/Author (Put All Your Authors Here, Separated by Commas)}
+/Title (CRQA: Crowd-powered Real-time Automated Question Answering System)
+/Author (Denis Savenkov, Eugene Agichtein)}
 \setcounter{secnumdepth}{0}  
  \begin{document}
 % The file aaai.sty is the style file for AAAI Press 
 % proceedings, working notes, and technical reports.
 %
 \title{CRQA: Crowd-powered Real-time Automated Question Answering System}
-%\author{
-%	Denis Savenkov\\
-%	Emory University\\
-%	\texttt{dsavenk@emory.edu}
-%\And
-%	Eugene Agichtein\\
-%	Emory University\\
-%	\texttt{eugene@mathcs.emory.edu}
-%}
+\author{
+	Denis Savenkov\\
+	Emory University\\
+	\texttt{dsavenk@emory.edu}
+\And
+	Eugene Agichtein\\
+	Emory University\\
+	\texttt{eugene@mathcs.emory.edu}
+}
 
 \maketitle
 \begin{abstract}
@@ -80,9 +81,13 @@ The described CRQA implementation is a promising step towards efficient and clos
 It raises many promising issues and opens directions for future work, such as selective crowdsourcing for only the questions deemed ``difficult'' for the automated system; more efficient online learning for obtaining ratings from the crowd and integrating them into the ranking model; and investigating additional features and sources of evidence for improving the joint ranking of the system and crowd input.
 This paper provides a flexible and powerful framework for combining the powers of crowdsourcing with automated question answering techniques, for building the next generation of real-time question answering systems.
 
+\todo[inline]{Add future work for contextual answers. What if we have a dialog and previous questions matter?}
+\todo[inline]{Emphasize, that we are leaving the time analysis for future work. Also, what is the impact of the time limit (60 seconds) on the performance of the system? More precisely, despite the requirement to provide an answer within one minute, what would be the performance of the system given more or less time?}
+\todo[inline]{do authors think it is possible to learn from the crowdsourcing rankings and answers to better answer questions automatically? if so, in what way?}
 
-%\section{Acknowledgments}
-%This work was partially supported by the Yahoo Labs Faculty Research Engagement Program (FREP).
+\section{Acknowledgments}
+The authors are grateful to the anonymous reviewers for their valuable comments and suggestions.
+This work was partially supported by the Yahoo Labs Faculty Research Engagement Program (FREP).
 
 \bigskip
 \bigskip
