@@ -1190,4 +1190,3 @@ FUNCTION {end.bib}
 "\end{thebibliography}" write$ newline$
 }
 EXECUTE {end.bib}
-
