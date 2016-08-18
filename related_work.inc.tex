@@ -27,8 +27,11 @@ Its application to (near) real-time scenarios poses certain additional challenge
 \cite{bernstein2011crowds} introduced the retainer model for recruiting synchronous crowds for interactive real-time tasks and showed their effectiveness on the best single image and creative generation tasks.
 VizWiz mobile application of \cite{bigham2010vizwiz} uses a similar strategy to quickly answer visual questions.
 This work builds on these ideas and uses the proposed retainer model to integrate a crowd into a real-time question answering system.
-The work of \cite{Lasecki:2013:CCC:2501988.2502057} showed how multiple workers can sit behind a conversational agent named Chorus, where human input is used to propose and vote on responses.
-\todo[inline]{Compare with Chorus in more detail. "how it is different than Chorus or what was missing from such a system like chorus and to what is currently being presented. What was missing in the evaluation that Chorus did vs what you are presenting"}
-In our work we use similar ideas in application to question answering, which requires more comprehensive responses from the workers.
+The work of \cite{Lasecki:2013:CCC:2501988.2502057} showed how multiple workers can sit behind a conversational agent named Chorus.
+Similarly to this work, Chorus used crowd workers to propose and vote on responses to user messages.
+However, our CRQA system represents a hybrid approach to question answering, where the automatic QA module proposes certain answer candidates, and workers can judge their quality as well as propose additional responses.
+Such an approach allows us to focus on more complex informational questions, for many of which the workers might not know the answer, but still can contribute by estimating the quality of automatically generated candidates.
+Chorus, on the contrary, considered somewhat simpler tasks (\textit{e.g.}, things to do in a new place, dinner date ideas, textit{etc.}), but focused more on maintaining a coherent dialog, which poses additional challenges, such as keeping a working dialog memory, keeping the users engaged with the dialog using gamification.
+These ideas can be combined with the ideas of our work to build more intelligent assistants, that do not rely completely on the expertise of the workers.
 Another use of a crowd for maintaining a dialog is presented in \cite{Bessho:2012:DSU:2392800.2392841}, who let the crowd handle difficult cases, when a system was not able to automatically retrieve a good response from the database of twitter data.
 In our paper, we focus on a single part of the human-computer dialog, i.e. question answering, which requires a system to provide some useful information in a response to the user.

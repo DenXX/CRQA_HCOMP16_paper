@@ -70,7 +70,7 @@ Our findings can be useful for developing hybrid human-computer systems for auto
 \input{related_work.inc}
 
 \section{Conclusion} 
-In this paper we presented CRQA, the first, as far as we know, real-time question answering system that integrated crowd work within an automated question answering system.
+In this paper we presented CRQA, the first, as far as we know, real-time question answering system that integrated crowd work within an automated QA system.
 Specifically, we explore different methods of obtaining input from the crowd, and use a machine-learned answer re-ranking model that incorporates the crowd input as features to select the final system answer to return to the user. 
 
 We report a large-scale experiment in which over a thousand real user questions were submitted to the CRQA system in real time, as part of the LiveQA challenge.
@@ -78,12 +78,9 @@ CRQA was able to successfully answer these questions in under 1 minute, with ove
 Importantly, CRQA significantly improved question quality and coverage compared to the starting automated-only system, and, surprisingly, was able to return better answers on average compared to the traditional CQA system with millions of users (Yahoo! Answers) with answers collected more than \textit{two days} after the original posting time.
 
 The described CRQA implementation is a promising step towards efficient and close integration of crowd work and automated analysis for real-time question answering.
-It raises many promising issues and opens directions for future work, such as selective crowdsourcing for only the questions deemed ``difficult'' for the automated system; more efficient online learning for obtaining ratings from the crowd and integrating them into the ranking model; and investigating additional features and sources of evidence for improving the joint ranking of the system and crowd input.
+It raises many promising issues and opens directions for future work, such as the performance of the crowdsourcing module when given less or more time to work, selective crowdsourcing for only the questions deemed ``difficult'' for the automated system; more efficient online learning for obtaining ratings from the crowd and integrating them into the ranking model; and investigating additional features and sources of evidence for improving the joint ranking of the system and crowd input.
 This paper provides a flexible and powerful framework for combining the powers of crowdsourcing with automated question answering techniques, for building the next generation of real-time question answering systems.
 
-\todo[inline]{Add future work for contextual answers. What if we have a dialog and previous questions matter?}
-\todo[inline]{Emphasize, that we are leaving the time analysis for future work. Also, what is the impact of the time limit (60 seconds) on the performance of the system? More precisely, despite the requirement to provide an answer within one minute, what would be the performance of the system given more or less time?}
-\todo[inline]{do authors think it is possible to learn from the crowdsourcing rankings and answers to better answer questions automatically? if so, in what way?}
 
 \section{Acknowledgments}
 The authors are grateful to the anonymous reviewers for their valuable comments and suggestions.
