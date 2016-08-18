@@ -1,0 +1,95 @@
+\def\year{2016}\relax
+%File: formatting-instruction.tex
+\documentclass[letterpaper]{article}
+\usepackage{aaai16}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{todonotes}
+\usepackage{enumitem}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+
+\pdfinfo{
+/Title (CRQA: Crowd-powered Real-time Automated Question Answering System)
+/Author (Denis Savenkov, Eugene Agichtein)}
+\setcounter{secnumdepth}{0}  
+ \begin{document}
+% The file aaai.sty is the style file for AAAI Press 
+% proceedings, working notes, and technical reports.
+%
+\title{CRQA: Crowd-powered Real-time Automated Question Answering System}
+\author{
+	Denis Savenkov\\
+	Emory University\\
+	\texttt{dsavenk@emory.edu}
+\And
+	Eugene Agichtein\\
+	Emory University\\
+	\texttt{eugene@mathcs.emory.edu}
+}
+
+\maketitle
+\begin{abstract}
+Modern search engines have made dramatic progress in the answering of questions about facts, such as those that might be retrieved or directly inferred from a knowledge base.
+However, many other questions that real users ask are more complex, such as requests for opinions or advice for a particular situation, and are still largely beyond the competence of the computer systems.
+As conversational agents become more popular, QA systems are increasingly expected to handle such complex questions, and to do so in (nearly) real-time, as the searcher is unlikely to wait longer than a minute or two for an answer.
+One way to overcome some of the challenges in complex question answering is crowdsourcing.
+We explore two ways crowdsourcing can assist a question answering system that operates in (near) real time: by providing answer {\em validation}, which could be used to filter or re-rank the candidate answers, and by {\em creating} the answer candidates directly.
+In this paper we present CRQA, a crowd-powered, near real-time automated question answering system for complex informational tasks, that incorporates a crowdsourcing module for augmenting and validating the candidate answers.
+The crowd input, obtained in real-time, is integrated into CRQA via a learning-to-rank model, to select the final system answer.
+Our large-scale experiments, performed on a live stream of real users questions, show that even within a one minute time limit, CRQA can produce answers of high quality.
+The returned answers are judged to be significantly better compared to automated system alone, and even are often preferred to answers posted days later in the original community question answering site.
+Our findings can be useful for developing hybrid human-computer systems for automatic question answering and conversational agents.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+\input{introduction.inc}
+
+\section{System design}
+\label{sec:system}
+\input{system.inc}
+
+\section{Experiments}
+\label{sec:experiments}
+\input{experiments.inc}
+
+\section{Analysis and Discussion}
+\label{sec:analysis}
+\input{analysis.inc}
+
+\section{Related Work}
+\label{sec:related_work}
+\input{related_work.inc}
+
+\section{Conclusion} 
+In this paper we presented CRQA, the first, as far as we know, real-time question answering system that integrated crowd work within an automated QA system.
+Specifically, we explore different methods of obtaining input from the crowd, and use a machine-learned answer re-ranking model that incorporates the crowd input as features to select the final system answer to return to the user. 
+
+We report a large-scale experiment in which over a thousand real user questions were submitted to the CRQA system in real time, as part of the LiveQA challenge.
+CRQA was able to successfully answer these questions in under 1 minute, with over 80\% of the answers subsequently rated to be fair or better.
+Importantly, CRQA significantly improved question quality and coverage compared to the starting automated-only system, and, surprisingly, was able to return better answers on average compared to the traditional CQA system with millions of users (Yahoo! Answers) with answers collected more than \textit{two days} after the original posting time.
+
+The described CRQA implementation is a promising step towards efficient and close integration of crowd work and automated analysis for real-time question answering.
+It raises many promising issues and opens directions for future work, such as the performance of the crowdsourcing module when given less or more time to work, selective crowdsourcing for only the questions deemed ``difficult'' for the automated system; more efficient online learning for obtaining ratings from the crowd and integrating them into the ranking model; and investigating additional features and sources of evidence for improving the joint ranking of the system and crowd input.
+This paper provides a flexible and powerful framework for combining the powers of crowdsourcing with automated question answering techniques, for building the next generation of real-time question answering systems.
+
+
+\section{Acknowledgments}
+The authors are grateful to the anonymous reviewers for their valuable comments and suggestions.
+This work was partially supported by the Yahoo Labs Faculty Research Engagement Program (FREP).
+
+\bigskip
+\bigskip
+
+\bibliographystyle{aaai}
+\bibliography{references}
+
+\end{document}

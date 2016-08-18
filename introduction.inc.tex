@@ -1,0 +1,36 @@
+It has long been a dream to communicate with a computer as one might with another human being using natural language speech and text.
+We are now coming closer to this dream, as natural language interfaces become increasingly popular.
+Our phones are already reasonably good at recognizing speech, and personal assistants, such as Apple Siri, Google Now, Microsoft Cortana, Amazon Alexa, \textit{etc.}, help us with everyday tasks and answer some of our questions.
+Chat bots are arguably considered ``the next big thing'', and a number of startups developing this kind of technology has emerged in Silicon Valley and around the world\footnote{http://time.com/4194063/chatbots-facebook-messenger-kik-wechat/}.
+
+Question answering is one of the major components of such personal assistants.
+Existing techniques already allow users to get direct answers to their factoid questions.
+%\footnote{https://www.stonetemple.com/rich-answers-in-search/}.
+However, there is still a large number of more complex questions, such as advice or accepted general opinions, for which users have to dig into the ``10 blue links'' and extract or synthesize answers from information buried within the retrieved documents.
+To cater to these informational needs, community question answering (CQA) sites emerged, such as Yahoo! Answers and Stack Exchange.
+These sites provide a popular way to connect information seekers with answerers.
+Unfortunately, it can take minutes or hours, and sometimes days, for the community to respond, and some questions are left unanswered altogether. 
+
+To facilitate research on this challenge, TREC LiveQA shared task\footnote{http://www.trec-liveqa.org} was started in 2015, where automated systems attempt to answer real users' questions within a 1 minute period.
+This task was successful, with the winning system able to automatically return a reasonable answer to more than half of the submitted questions, as assessed for TREC by the trained judges from NIST.
+Nevertheless, many questions were not answered well by any of the participating systems.
+
+In this work we explore two ways \textit{crowdsourcing} can be used to help an automated system answer complex user questions.
+The main challenge is how to adapt existing ``batch-mode'' crowdsourcing platforms such as Amazon Mechanical Turk to real-time settings, \textit{e.g.}, to produce an answer within a minute.
+More specifically, our research questions can be stated as:
+\textbf{RQ1}. Can crowdsourcing be used to improve the performance of a near real-time automated question answering system?
+\textbf{RQ2}. What is the relative contribution of candidate answer ratings and answers provided by the workers to the overall question answering performance?
+\textbf{RQ3}. What are the trade-offs in performance, cost, and scalability of using crowdsourcing for real-time question answering?
+
+To explore these research questions, we introduce our CRQA system, which stands for Crowd-powered Real-time Question Answering.
+CRQA integrates a crowdsourcing module into an automated question answering system within an overall learning-to-rank framework for selecting answers to complex questions.
+We report extensive experiments of stress-testing the CRQA system, by participating in the TREC LiveQA 2016 evaluation challenge, which provided us with a realistic evaluation setup.
+
+Specifically, the contributions of this paper are threefold:
+\begin{enumerate}
+	\item CRQA, a novel hybrid near real-time question answering system, that uses crowd workers to rate and augment automatically generated candidate answers.
+	\item Large scale experiments using CRQA to answer real user questions in a live TREC LiveQA 2016 challenge setting.
+	\item Extensive analysis of the system performance, focusing on the contributions of crowd input to the performance of the overall system.
+\end{enumerate}
+
+The results and findings of this work can be useful to guide future research on hybrid human-computer question answering, and automated intelligent assistant systems.
