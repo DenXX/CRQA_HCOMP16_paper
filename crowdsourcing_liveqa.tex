@@ -86,6 +86,13 @@ More specifically, our research questions can be stated as:
 \textbf{RQ2}. What kind of contributions from crowd workers can help improve automatic question answering and what is the relative impact of different types of feedback to the overall question answering performance?
 \textbf{RQ3}. What are the trade-offs in performance, cost, and scalability of using crowdsourcing for real-time question answering?
 
+\begin{figure*}[h!t]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/ya_question}
+	\caption{Example of the question from Yahoo! Answers community question answering platform}
+	\label{fig:ya_question}
+\end{figure*}
+
 To explore these research questions, we introduce our CRQA system, which stands for Crowd-powered Real-time Question Answering.
 CRQA integrates a crowdsourcing module into an automatic question answering system within an overall learning-to-rank framework for selecting answers to complex questions.
 We report extensive experiments of stress-testing the CRQA system, by participating in the TREC LiveQA 2016 evaluation challenge.
@@ -101,25 +108,18 @@ The results and findings of this work can be useful to guide future research on 
 \section{System design}
 \label{sec:system}
 
-Before diving into the architecture of our Crowd-powered Real-time Question Answering (CRQA) system, we will describe the setup of the TREC LiveQA shared task, which affected some of the system design choices.
-In 2015 and 2016 versions of the task participants of the challenge developed a live question answering system, that responded to user questions, which were sampled from the live stream of Yahoo! Answers community question answering website.
-Each input question consisted of a short question title, body and category (Figure~\ref{fig:ya_question}).
-A QA system had to provide an answer of 1000 characters or less within a 1 minute period using any available data source.
-A reader can refer to \cite{overviewliveqa15} for more details on TREC LiveQA 2015 results and analysis.
-
-\begin{figure*}[h!t]
-	\centering
-	\includegraphics[width=0.75\textwidth]{img/ya_question}
-	\caption{Example of the question from Yahoo! Answers community question answering platform}
-	\label{fig:ya_question}
-\end{figure*}
-
 \begin{figure*}[h!t]
 	\centering
 	\includegraphics[width=0.8\textwidth]{img/system}
 	\caption{The architecture of our Crowd-powered Real-time Question Answering system, that uses crowdsourcing to augment a list of automatically extracted candidate answers and to rate their quality}
 	\label{fig:system}
 \end{figure*}
+
+Before diving into the architecture of our Crowd-powered Real-time Question Answering (CRQA) system, we will describe the setup of the TREC LiveQA shared task, which affected some of the system design choices.
+In 2015 and 2016 versions of the task participants of the challenge developed a live question answering system, that responded to user questions, which were sampled from the live stream of Yahoo! Answers community question answering website.
+Each input question consisted of a short question title, body and category (Figure~\ref{fig:ya_question}).
+A QA system had to provide an answer of 1000 characters or less within a 1 minute period using any available data source.
+A reader can refer to \cite{overviewliveqa15} for more details on TREC LiveQA 2015 results and analysis.
 
 Our CRQA system represents a hybrid system, that includes an automatic question answering and crowdsourcing modules.
 The high level architecture is presented in Figure~\ref{fig:system}.
@@ -194,6 +194,13 @@ In a fully automatic setup the top ranked candidate is returned as the final ans
 \subsection{Crowdsourcing module}
 \label{sec:system:crowd}
 
+\begin{figure*}[h!t]
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/crowd_ui}
+	\caption{User Interface for workers in our Crowd-Powered Question Answering system}
+	\label{fig:crowd_ui}
+\end{figure*}
+
 Unfortunately, fully automatic QA systems still struggle with many difficult questions~\cite{overviewliveqa15}, therefore we decided to explore crowdsourcing as one of the ways to help the system to deal with these questions.
 Instead of immediately returning the answers, CRQA sends questions and top-7 ranked candidates to crowd workers and waits for the responses.
 We chose to give 7 answers based on the average number of rated answers in our preliminary studies~\cite{savenkov_crowdsourcing2016a}.
@@ -201,13 +208,6 @@ Since in TREC LiveQA systems had only 60 seconds to answer each question, we sta
 To help resolve the cases when the automatic QA module was not able to generate good candidates, we ask workers to provide their own answers, if possible.
 Additionally, workers are expected to rate the provided answers, which should help to improve the ranking.
 Figure~\ref{fig:crowd_ui} presents the user interface of our crowdsourcing module.
-
-\begin{figure*}[h!t]
-	\centering
-	\includegraphics[width=0.9\textwidth]{img/crowd_ui}
-	\caption{User Interface for workers in our Crowd-Powered Question Answering system}
-	\label{fig:crowd_ui}
-\end{figure*}
 
 The overall algorithm for obtaining crowd input for real-time question answering is the following:
 \begin{enumerate}
@@ -247,12 +247,12 @@ In addition, it is also possible to reduce the latency associated with hiring ne
 \textbf{Instructions} \\
 \hline
 1. This HIT will last exactly 15 minutes\\
-2. Your HIT will only be submitted after these 15 minutes\\
+2. Your HIT will only be submitted after these 15 min.\\
 3. In this period of time you will receive some questions, that came from real users on the Internet\\
 4. Each question has a time limit after which it will disappear and you will need to want for the next one\\
 5. If you know the answer to the question, please type it in the corresponding box\\
 6. At some point several candidate answers will appear at the bottom of the page\\
-7. Please rate them on a scale from 1 (bad) to 4 (excellent)\\
+7. Please rate them from 1 (bad) to 4 (excellent)\\
 8. Do not close the browser or reload the page as this will reset your assignment.\\
 \hline
 \end{tabular}
@@ -404,6 +404,23 @@ To summarize, our Crowd-powered Real-time Question Answering system substantiall
 
 In this section we will analyze some of the results of our experiments and discuss their implications.
 
+\begin{figure*}[h!t]
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/nworkers_vs_accuracy}
+		\caption{avg-score: Average score per question}
+		\label{fig:nworkers_vs_accuracy}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/nworkers_vs_precision}
+		\caption{avg-prec: Average score per answer (ignoring non-answered questions)}
+		\label{fig:nworkers_vs_precision}
+	\end{subfigure}
+	\caption{Plot showing how the quality of the final answer depends on the number of workers per question}
+	\label{fig:nworkers_vs_quality}
+\end{figure*}
+
 \subsection{Worker answers vs ratings}
 \label{sec:analysis:answers_vs_ratings}
 
@@ -422,7 +439,7 @@ What is more important, the contributions are independent and therefore it is be
 
 \begin{table*}[ht]
 \centering
-\begin{tabular}{| p{10.2cm} | p{5cm} | c |}
+\begin{tabular}{| p{10cm} | p{5.5cm} | c |}
 \hline
 Question & Answer & Score \\
 \hline
@@ -473,23 +490,6 @@ Since not all assignments were accepted, overall, our experiment cost \$0.88 per
 First, we will study the effect of the number of workers on the performance of our CRQA system.
 For this experiment we randomly sampled certain percentage of workers and removed all contributions (answers and ratings) of others.
 Figure~\ref{fig:nworkers_vs_quality} plots the dependency of the performance of our QA system on the number of workers.
-
-\begin{figure*}[h!t]
-  \begin{subfigure}[t]{0.48\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{img/nworkers_vs_accuracy}
-	\caption{avg-score: Average score per question}
-	\label{fig:nworkers_vs_accuracy}
-  \end{subfigure}
-  \begin{subfigure}[t]{0.48\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{img/nworkers_vs_precision}
-	\caption{avg-prec: Average score per answer (ignoring non-answered questions)}
-	\label{fig:nworkers_vs_precision}
-  \end{subfigure}
-	\caption{Plot showing how the quality of the final answer depends on the number of workers per question}
-	\label{fig:nworkers_vs_quality}
-\end{figure*}
 
 Obviously, more workers mean more reliable answer ratings and more answer candidates, which improves the performance of the question answering system.
 However, we can observe diminishing returns, the cost per extra gain in performance metrics decreases as the number of workers grows.
