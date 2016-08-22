@@ -27,7 +27,7 @@
 \setlength{\pdfpageheight}{11in}
 
 \pdfinfo{
-/Title (CRQA: Crowd-powered Real-time Automated Question Answering System)
+/Title (CRQA: Crowd-powered Real-time Automatic Question Answering System)
 /Author (Denis Savenkov, Eugene Agichtein)}
 \setcounter{secnumdepth}{0}
 
@@ -43,7 +43,7 @@
 \And
 	Eugene Agichtein\\
 	Emory University\\
-	\texttt{eugene@mathcs.emory.edu}
+	\texttt{eugene.agichtein@emory.edu}
 }
 
 \maketitle
@@ -66,7 +66,7 @@ Our findings can be useful for developing hybrid human-computer systems for auto
 It has long been a dream to communicate with a computer as one might with another human being using natural language speech and text.
 We are now coming closer to this dream, as natural language interfaces become increasingly popular.
 Our phones are already reasonably good at recognizing speech, and personal assistants, such as Apple Siri, Google Now, Microsoft Cortana, Amazon Alexa, \etc, help us with everyday tasks and answer some of our questions.
-Chat bots are arguably considered ``the next big thing'', and a number of startups developing this kind of technology has emerged in Silicon Valley and around the world\footnote{http://time.com/4194063/chatbots-facebook-messenger-kik-wechat/}.
+``Chat bots'', or natural language agents, are being increasingly adapted for business and entertainment, and a number of startups developing this kind of technology have emerged\footnote{http://time.com/4194063/chatbots-facebook-messenger-kik-wechat/}.
 
 Question answering is one of the major components of such personal assistants.
 Existing techniques already allow users to get direct answers to their factoid questions.
@@ -121,7 +121,7 @@ Each input question consisted of a short question title, body and category (Figu
 A QA system had to provide an answer of 1000 characters or less within a 1 minute period using any available data source.
 A reader can refer to \cite{overviewliveqa15} for more details on TREC LiveQA 2015 results and analysis.
 
-Our CRQA system represents a hybrid system, that includes an automatic question answering and crowdsourcing modules.
+Our CRQA system represents a hybrid system, which includes an automatic question answering and crowdsourcing modules.
 The high level architecture is presented in Figure~\ref{fig:system}.
 The automatic part of the CRQA system follows an Information Retrieval (IR) approach to question answering, and generates a set of candidate answer passages from multiple data sources.
 After candidates are generated, they are ranked by a trained model, and, in the fully automatic mode, the top candidate could be returned as the answer.
@@ -214,15 +214,15 @@ The overall algorithm for obtaining crowd input for real-time question answering
 \item When a system receives a question, it is posted to workers, who have 50 seconds to provide their input
 \item Workers are asked to write an answer if they can provide one (optional)
 \item Otherwise they need to wait for answer candidates to appear
-\item When a system is done generating and ranking candidates, it posts top-7 answers for rating (which usually happens $\sim$ 35 seconds before the question expires)
-\item Workers receive a list of answers and rate them until the timer expires. Answers, provided by the workers, are also rated, except by their authors. Each answer is rated on a scale from 1 to 4, using the official TREC LiveQA rating scale:
+\item When a system is done generating and ranking candidates, it posts top-7 answers for rating (which usually happens $\sim$ 15 seconds after the question is posted)
+\item Workers receive a list of answers and rate them until the timer expires. Answers, provided by the workers, are also rated by other workers. Each answer is rated on a scale from 1 to 4, using the official TREC LiveQA rating scale:
 	\begin{itemize}[noitemsep,topsep=0pt]
     \item 1 -- Bad: contains no useful information
     \item 2 -- Fair: marginally useful information
     \item 3 -- Good: partially answers the question
     \item 4 -- Excellent: fully answers the question
     \end{itemize}
-\item The interface displays 3 answers at a time, when an answer gets rated, it disappears and its place is taken by another answer from the pool. The interface displays only the first 300 characters of the answer, which was experimentally shown to be enough on average to make a good judgment.
+\item The worker interface displays 3 answers at a time, and when an answer gets rated, it disappears and its place is taken by another answer from the pool. The interface displays only the first 300 characters of the answer, which was experimentally shown to be enough on average to make a good judgment.
 Full answer can be revealed upon clicking the ``show all'' link.
 \item When the question expires, it disappears, and workers wait for the next question
 \end{enumerate}
@@ -234,7 +234,7 @@ Since not all assignments were accepted right away, the number of workers for ea
 When a worker first gets to our crowdsourcing interface, she is shown task instructions (Table \ref{table:crowd_instructions}) and asked to wait for the questions to arrive.
 The workers were paid \$1.00 for a 15 minutes task, no matter how many questions they received.
 
-We should note, that the setup of TREC LiveQA shared task was very favorable for the retainer crowdsourcing model, as the questions were arriving almost every minute uniformly over 24 hour period, which diminishes the waiting and worker idleness problems~\cite{Lasecki:2013:CCC:2501988.2502057}.
+We should note, that the setup of TREC LiveQA shared task was favorable for the retainer crowdsourcing model, as the questions were arriving almost every minute uniformly over 24 hour period, which diminishes the waiting and worker idleness problems~\cite{Lasecki:2013:CCC:2501988.2502057}.
 An interesting challenge, that we leave for future work, is how to adjust such a crowd-powered QA system to varying questions volume, while optimizing the costs.
 One idea is to allocate crowdsourcing resources to the incoming questions proportionally to the expected effect, \ie order the questions by the expected performance of the automatically generated answer.
 There are also certain techniques to optimize the costs of the retainer model~\cite{bernstein2012analytic}.
@@ -468,8 +468,8 @@ What is a good remedy/medicine for stomach aches? Specifically ones caused by st
 
 Predicting the quality of answers and ranking them to select the best is quite challenging for automatic question answering~\cite{surdeanu2011learning}.
 External feedback, such as noisy answer ratings, obtained from the crowd workers, provides valuable information, which, as our results demonstrate, can help a QA system to better re-rank the answers.
-However, the capacity of crowdsourcing for answer ratings are obviously limited, as systems often are dealing with hundreds and thousands of answer candidates for a given question.
-In this work, we made a choice to rate only top-7 answers according the automatic system ranking.
+However, the capacity of crowdsourcing for answer ratings is limited, as systems often deal with hundreds and thousands of answer candidates for a given question.
+In this work, we chose to rate only top-7 answers according the automatic system ranking.
 This decision was made based on the average number of ratings workers could provide in the allotted time.
 However, the order in which the answers are shown can also have a strong effect on the system performance, because the answers are typically rated one by one in the order they are displayed on the screen.
 To study the effect of the answer presentation order on the final answer quality, our system implemented two different strategies, which were selected at random for each question and each worker.
@@ -491,14 +491,14 @@ First, we will study the effect of the number of workers on the performance of o
 For this experiment we randomly sampled certain percentage of workers and removed all contributions (answers and ratings) of others.
 Figure~\ref{fig:nworkers_vs_quality} plots the dependency of the performance of our QA system on the number of workers.
 
-Obviously, more workers mean more reliable answer ratings and more answer candidates, which improves the performance of the question answering system.
+Intuitively, more workers mean more reliable answer ratings and more answer candidates, which improves the performance of the question answering system.
 However, we can observe diminishing returns, the cost per extra gain in performance metrics decreases as the number of workers grows.
 Half of the overall performance improvements could be achieved with only 3 workers per question, which would save $\sim$70\% of the costs.
 
-An alternative cost-reduction strategy is selective triggering of crowdsourcing, which would only ask for workers feedback for some of the questions.
+An alternative cost-reduction strategy is {\em selective} crowdsourcing, which would only ask for workers feedback for some of the questions.
 Such a strategy would be necessary to scale a crowd-powered question answering system to a higher volume of questions.
 There are multiple different approaches for such selective crowdsourcing: \eg a system can only ask for crowd contributions if it did not generate enough candidate answers or the predicted quality of the top scoring candidates was low~\cite{carmel2010estimating,he2006query}.
-We leave these questions for the future work, as here we focused on the scenario, proposed by the organizers of the TREC LiveQA shared tasks, where questions arrive one by one and it is possible to utilize crowd input for every question.
+We leave these questions for future work, as here we focused on the scenario, proposed by the organizers of the TREC LiveQA shared tasks, where questions arrive one by one and it is possible to utilize crowd input for every question.
 
 To summarize, in the explored real-time QA scenario it is possible to reduce the costs of crowdsourcing by reducing the number of workers, although with some performance losses.
 Our analysis suggests that paying $\sim$30\% of the original cost would give $\sim$50\% of the performance improvements.
