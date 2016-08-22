@@ -150,8 +150,8 @@ However, quite often it is hard to find a similar question in an archive, and ma
 Therefore, we integrate web search\footnote{https://datamarket.azure.com/dataset/bing/searchweb}, which our system queries to retrieve candidate answers from regular web documents.
 We retrieve top-10 relevant web documents and extract paragraphs of text from their main content, as detected by a method based on \cite{Kohlschutter_2010}.
 
-In addition to the candidate answers themselves, CRQA extract certain meta-data, that helps to estimate the relevance of a passage to the current question.
-For regular web page paragraphs, it is useful to know the topic of the page (\eg from its title) and the context (such as text that immediately precedes the paragraph in the document).
+In addition to the candidate answers themselves, CRQA extracts certain meta-data, that helps to estimate the relevance of a passage to the current question.
+For regular web page paragraphs, it is useful to know the topic of the page (\eg its title) and the context (such as text that immediately precedes the paragraph in the document).
 For CQA answers, our system stores the text of the corresponding question title, body and category.
 For convenience, we will refer to this question title and web page title as \textit{``answer topic''}, while the body of the retrieved question and the preceding text block for web candidates as \textit{``answer context''}.
 Next, for each candidate answer we compute a set of features, described in Table \ref{table:features}.
@@ -204,7 +204,7 @@ Figure~\ref{fig:crowd_ui} presents the user interface of our crowdsourcing modul
 
 \begin{figure*}[h!t]
 	\centering
-	\includegraphics[width=0.8\textwidth]{img/crowd_ui}
+	\includegraphics[width=0.9\textwidth]{img/crowd_ui}
 	\caption{User Interface for workers in our Crowd-Powered Question Answering system}
 	\label{fig:crowd_ui}
 \end{figure*}
